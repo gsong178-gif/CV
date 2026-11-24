@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Maria | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8f7fc;
+            color: #29243a;
+            line-height: 1.7;
+        }
+
+        :root {
+            --primary: #8064c9;
+            --secondary: #a995e5;
+            --light: #f0ebff;
+            --dark: #29243a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 9%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px #00000008;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 10%;
+            gap: 40px;
+            background: linear-gradient(120deg, #f0ebff, #fff);
+        }
+
+        .hero-text {
+            max-width: 580px;
+        }
+
+        .hero-text small {
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 27px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #6248a8;
+            transform: translateY(-3px);
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 350px;
+            border-radius: 45% 45% 20px 20px;
+            background: var(--light);
+            border: 8px solid white;
+            box-shadow: 0 15px 40px #8064c933;
+            object-fit: cover;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px #00000008;
+        }
+
+        .about-box p {
+            color: #777;
+        }
+
+        .info p {
+            margin: 12px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .education {
+            background: var(--light);
+        }
+
+        .timeline {
+            max-width: 650px;
+            margin: auto;
+            border-left: 3px solid var(--primary);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -39px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+        }
+
+        .timeline-item small {
+            color: #999;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .skill {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #00000008;
+        }
+
+        .skill p {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 9px;
+            background: #eee;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress div {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+        }
+
+        .experience {
+            background: var(--light);
+        }
+
+        .experience-card {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px #00000008;
+        }
+
+        .contact-box p {
+            margin: 12px 0;
+            color: #777;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        .fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: .7s;
+        }
+
+        .fade.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width: 768px) {
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 55px 7%;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .profile-img {
+                width: 230px;
+                height: 260px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Maria.</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Profil</a></li>
+            <li><a href="#education">Pendidikan</a></li>
+            <li><a href="#skills">Skill</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero" id="home">
+        <div class="hero-text">
+            <small>HALO, SELAMAT DATANG!</small>
+            <h1>I'm <span>Maria</span></h1>
+            <h3>High School Student</h3>
+            <p>
+                Saya adalah seorang pelajar SMA yang kreatif,
+                disiplin, bertanggung jawab, dan memiliki semangat
+                tinggi untuk terus belajar serta mengembangkan diri.
+            </p>
+            <a href="#about" class="btn">Kenali Saya</a>
+        </div>
+
+        <img
+            src="https://placehold.co/500x600/e9e0ff/8064c9?text=Foto+Maria"
+            alt="Foto Profil Maria"
+            class="profile-img"
+        >
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade">
+        <div class="section-title">
+            <h2>Tentang <span>Saya</span></h2>
+            <p>Mengenal lebih dekat tentang diri saya</p>
+        </div>
+
+        <div class="about">
+            <div class="about-box">
+                <h3>Profil Singkat</h3>
+                <p>
+                    Nama saya Maria. Saya merupakan siswa SMA
+                    yang memiliki rasa ingin tahu tinggi dan
+                    senang mempelajari hal-hal baru.
+                    Saya percaya bahwa kerja keras, kedisiplinan,
+                    dan pengalaman merupakan kunci untuk meraih
+                    masa depan yang lebih baik.
+                </p>
+            </div>
+
+            <div class="about-box info">
+                <h3>Informasi Pribadi</h3>
+                <p><b>Nama:</b> Maria</p>
+                <p><b>Status:</b> Pelajar SMA</p>
+                <p><b>Hobi:</b> Membaca, Menulis, Musik</p>
+                <p><b>Domisili:</b> Indonesia</p>
+                <p><b>Email:</b> maria@email.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="education fade">
+        <div class="section-title">
+            <h2>Riwayat <span>Pendidikan</span></h2>
+            <p>Perjalanan pendidikan saya</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Sekolah Menengah Atas</h3>
+                <small>2024 - Sekarang</small>
+                <p>Nama SMA: Isi nama sekolah Anda</p>
+                <p>Status: Sedang menempuh pendidikan</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Sekolah Menengah Pertama</h3>
+                <small>2021 - 2024</small>
+                <p>Nama SMP: Isi nama sekolah Anda</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Sekolah Dasar</h3>
+                <small>2015 - 2021</small>
+                <p>Nama SD: Isi nama sekolah Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="fade">
+        <div class="section-title">
+            <h2>Keahlian <span>Saya</span></h2>
+            <p>Kemampuan yang sedang saya kembangkan</p>
+        </div>
+
+        <div class="skills-container">
+            <div class="skill">
+                <p>Komunikasi</p>
+                <div class="progress">
+                    <div style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <p>Kerja Sama Tim</p>
+                <div class="progress">
+                    <div style="width:90%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <p>Microsoft Office</p>
+                <div class="progress">
+                    <div style="width:75%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <p>Kreativitas</p>
+                <div class="progress">
+                    <div style="width:85%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="experience fade">
+        <div class="section-title">
+            <h2>Pengalaman & <span>Prestasi</span></h2>
+            <p>Aktivitas dan pencapaian saya</p>
+        </div>
+
+        <div class="experience-card">
+            <h3>Pengalaman Organisasi</h3>
+            <p>Isi pengalaman organisasi atau kegiatan sekolah Anda.</p>
+            <br>
+
+            <h3>Prestasi</h3>
+            <p>Isi prestasi akademik maupun non-akademik Anda.</p>
+            <br>
+
+            <h3>Kegiatan</h3>
+            <p>Isi kegiatan ekstrakurikuler atau kegiatan sosial Anda.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade">
+        <div class="section-title">
+            <h2>Hubungi <span>Saya</span></h2>
+            <p>Mari terhubung dan saling mengenal!</p>
+        </div>
+
+        <div class="contact-box">
+            <h3>Maria</h3>
+            <p>Terima kasih telah mengunjungi CV online saya.</p>
+            <p>📧 Email: maria@email.com</p>
+            <p>📱 Instagram: @username</p>
+            <p>📍 Indonesia</p>
+            <a href="mailto:maria@email.com" class="btn">
+                Kirim Email
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Maria | Personal CV Website</p>
+        <p>Designed with ❤️</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Animasi ketika halaman di-scroll
+        const elements = document.querySelectorAll('.fade');
+
+        function reveal() {
+            elements.forEach(element => {
+                const position =
+                    element.getBoundingClientRect().top;
+
+                if (position < window.innerHeight - 100) {
+                    element.classList.add('show');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Efek navbar saat diklik
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('nav a')
+                    .forEach(item => item.style.color = '');
+
+                this.style.color = '#8064c9';
+            });
+        });
+    </script>
+
+</body>
+</html>
